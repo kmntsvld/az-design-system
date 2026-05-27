@@ -1,0 +1,54 @@
+/* az-design-system/tokens.css
+   Brand token source of truth. Keep in sync with tokens.js.
+   Usage: <link rel="stylesheet" href="design-system/tokens.css"> */
+
+:root {
+  /* ── Primary ────────────────────────────────────── */
+  --color-mulberry:       #830051;
+  --color-dark-mulberry:  #4d0030;
+  --color-magenta:        #d0006f;
+  --color-gold:           #f0ab00;
+
+  /* ── Neutrals ───────────────────────────────────── */
+  --color-graphite:       #3f4444;
+  --color-platinum:       #9db0ac;
+  --color-light-platinum: #ebefee;
+  --color-white:          #ffffff;
+
+  /* ── Accent (use sparingly — NOT for bg or body text) */
+  --color-purple:         #3c1053;
+  --color-navy:           #003865;
+  --color-light-blue:     #68d2df;
+  --color-lime-green:     #c4d600;
+
+  /* ── Sidebar (composite tokens) ─────────────────── */
+  --sidebar-bg:           linear-gradient(180deg, #830051 0%, #4d0030 100%);
+  --sidebar-divider:      rgba(255, 255, 255, 0.15);
+  --sidebar-text-secondary: rgba(255, 255, 255, 0.6);
+  --sidebar-text-muted:   rgba(255, 255, 255, 0.45);
+
+  /* ── Navigation ─────────────────────────────────── */
+  --nav-active-bg:        rgba(255, 255, 255, 0.2);
+  --nav-hover-bg:         rgba(255, 255, 255, 0.1);
+  --nav-input-bg:         rgba(255, 255, 255, 0.1);
+  --nav-input-border:     rgba(255, 255, 255, 0.2);
+
+  /* ── Interactive ─────────────────────────────────── */
+  --focus-ring:           #830051;
+  --btn-primary-bg:       #830051;
+  --btn-primary-hover:    #4d0030;
+}
+
+/* Typography base — Google Fonts loaded by host page */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4, blockquote {
+  font-family: 'Roboto Slab', Georgia, serif;
+}
+
+/* Sidebar utility class */
+.az-sidebar {
+  background: linear-gradient(180deg, var(--color-mulberry) 0%, var(--color-dark-mulberry) 100%);
+}
