@@ -38,4 +38,22 @@ window.AZ_DS = {
     heading: "'Roboto Slab', Georgia, serif",
     body:    "'Inter', -apple-system, sans-serif",
   },
+  darkMode: {
+    bg: {
+      base:     '#111118',
+      surface1: '#16121e',
+      surface2: '#1a1020',
+      surface3: '#131a28',
+    },
+    text: {
+      primary:   'rgba(255, 255, 255, 0.90)',
+      secondary: 'rgba(255, 255, 255, 0.82)',
+      muted:     'rgba(255, 255, 255, 0.50)',
+      disabled:  'rgba(255, 255, 255, 0.25)',
+    },
+    border: {
+      subtle: 'rgba(255, 255, 255, 0.07)',
+      strong: 'rgba(255, 255, 255, 0.14)',
+    },
+  },
 };

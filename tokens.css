@@ -37,6 +37,25 @@
   --focus-ring:           #830051;
   --btn-primary-bg:       #830051;
   --btn-primary-hover:    #4d0030;
+
+  /* ── Dark Mode Surface & Text Tokens ────────────────
+     Reference values for dark UI. Apply inside
+     html[data-theme="dark"] { } or
+     @media (prefers-color-scheme: dark) { } in your app.
+     These are NOT active by default — the consuming app
+     decides when to use them.                          */
+  --dark-bg-base:        #111118;   /* page background   */
+  --dark-bg-surface-1:   #16121e;   /* cards, panels     */
+  --dark-bg-surface-2:   #1a1020;   /* controls, headers */
+  --dark-bg-surface-3:   #131a28;   /* elevated rows     */
+
+  --dark-text:           rgba(255, 255, 255, 0.90);
+  --dark-text-secondary: rgba(255, 255, 255, 0.82);
+  --dark-text-muted:     rgba(255, 255, 255, 0.50);
+  --dark-text-disabled:  rgba(255, 255, 255, 0.25);
+
+  --dark-border:         rgba(255, 255, 255, 0.07);
+  --dark-border-strong:  rgba(255, 255, 255, 0.14);
 }
 
 /* Typography base — Google Fonts loaded by host page */

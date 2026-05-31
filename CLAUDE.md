@@ -3,6 +3,31 @@
 Minimal brand token library for AstraZeneca D&D IT tools.
 Static files only — no build step, no Node.js.
 
+This repo is the **single source of truth** for AstraZeneca brand colours and
+fonts. Consumer apps (Metrics-Dashboard, Resource-Plan) load these tokens via
+CDN — see "Connecting in HTML" below.
+
+## Правила работы (общие для всех трёх репо)
+
+> **git = единственный канон.** У Claude нет памяти между сессиями и
+> устройствами (ПК / Mac / телефон-облако / VPS). Всё важное должно жить в
+> закоммиченных файлах — иначе потеряется. Не «Claude запомнит», а «записано здесь».
+
+- **Бренд-токены — только в этом репо.** Цвета/шрифты приходят в приложения с
+  CDN (`@main`). В приложениях бренд-значения не хардкодить.
+- **Промоушен дизайн-решений** (например, новое из Claude Design, которое
+  понравилось) — когда правка затрагивает бренд-широкие токены ИЛИ пользователь
+  говорит «закинь в дизайн-систему: …»:
+  1. **Сначала спросить:** «это на весь бренд или только для этого экрана?»
+     — только экран → менять локально в приложении; весь бренд → шаги ниже.
+  2. Править `tokens.css` **И** `tokens.js` (оба файла!).
+  3. **Спросить, пушить ли в git** (пользователь может забыть). После пуша
+     CDN `@main` раздаёт новые значения во все приложения.
+  4. Если этот репо недоступен в текущей сессии (облако/телефон с одним репо) —
+     оставить пометку `TODO(design-system): …` в разделе Tech Debt того репо,
+     где идёт работа; следующая сессия с доступом доделает.
+- **Перед любым `git push` — спрашивать подтверждение.**
+
 ## Files
 
 | File | Purpose |
@@ -10,19 +35,26 @@ Static files only — no build step, no Node.js.
 | `tokens.css` | CSS custom properties — source of truth for all brand values |
 | `tokens.js` | `window.AZ_DS` object — same values for React JSX inline styles |
 
-## Adding to a project (git submodule)
+## Adding to a project (CDN, не submodule)
 
-```bash
-git submodule add https://github.com/kmntsvld/az-design-system design-system
-git submodule update --init   # after cloning the parent repo
-```
+Подключение через jsDelivr по ветке `main` — **без git submodule**.
+Обновляется само: после пуша в этот репо новые токены раздаются всем
+приложениям (кэш jsDelivr ~12 ч). Ничего инициализировать/обновлять в
+приложении не нужно.
+
+> Раньше использовался git submodule — отказались: он не работал в облачных и
+> мобильных сессиях, не давал версионирования и провоцировал дрейф копий.
+
+**Версионирование:** ветка `@main` = всегда свежее (для прототипов).
+Для прод — пин по git-тегу (`@v1.2.0`) или копия файлов в сборку, чтобы не
+зависеть от внешнего CDN.
 
 ## Connecting in HTML
 
 Add to `<head>` in this order:
 
 ```html
-<!-- 1. Fallback tokens (in case submodule not initialized) -->
+<!-- 1. Fallback tokens (in case the CDN is unreachable) -->
 <style>
   :root {
     --color-mulberry: #830051; --color-dark-mulberry: #4d0030;
@@ -37,9 +69,9 @@ Add to `<head>` in this order:
     --nav-input-bg: rgba(255,255,255,0.1); --nav-input-border: rgba(255,255,255,0.2);
   }
 </style>
-<!-- 2. Design system (overrides fallback) -->
-<link rel="stylesheet" href="design-system/tokens.css">
-<script src="design-system/tokens.js"></script>
+<!-- 2. Design system from CDN (overrides fallback) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kmntsvld/az-design-system@main/tokens.css">
+<script src="https://cdn.jsdelivr.net/gh/kmntsvld/az-design-system@main/tokens.js"></script>
 <!-- 3. Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +91,46 @@ border: 1px solid var(--sidebar-divider);
 style={{ background: window.AZ_DS.sidebar.bg }}
 style={{ color: window.AZ_DS.colors.mulberry }}
 ```
+
+## Dark Mode Tokens
+
+`tokens.css` и `tokens.js` содержат набор `--dark-*` токенов / `window.AZ_DS.darkMode.*`.
+Это **референсные значения** — они не применяются автоматически.
+Приложение само решает когда их использовать:
+
+```css
+/* Вариант 1: явный класс/атрибут */
+html[data-theme="dark"] {
+  --page-bg:   var(--dark-bg-base);
+  --text:      var(--dark-text);
+  --border:    var(--dark-border);
+}
+
+/* Вариант 2: системные настройки */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: var(--dark-bg-base);
+  }
+}
+```
+
+**Поверхности (от глубокой к приподнятой):**
+| Токен | Hex | Применение |
+|---|---|---|
+| `--dark-bg-base` | `#111118` | Фон страницы |
+| `--dark-bg-surface-1` | `#16121e` | Карточки, панели |
+| `--dark-bg-surface-2` | `#1a1020` | Контролы, шапки секций |
+| `--dark-bg-surface-3` | `#131a28` | Приподнятые строки |
+
+**Текст:**
+| Токен | Opacity | Применение |
+|---|---|---|
+| `--dark-text` | 90% | Основной текст |
+| `--dark-text-secondary` | 82% | Вторичный текст |
+| `--dark-text-muted` | 50% | Метки, подписи |
+| `--dark-text-disabled` | 25% | Неактивные элементы |
+
+**Границы:** `--dark-border` (7% white) / `--dark-border-strong` (14% white)
 
 ## What does NOT belong here
 
