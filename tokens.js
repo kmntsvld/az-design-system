@@ -84,18 +84,18 @@ window.AZ_DS = {
   // Part of the brand system — unlike FTE-heatmap & department badges.
   status: {
     light: {
-      over:    { dot: '#003865', fg: '#003865', bg: '#e6eef5' },
-      ontrack: { dot: '#c4d600', fg: '#5f7000', bg: '#f1f5d6' },
-      risk:    { dot: '#f0ab00', fg: '#8a6200', bg: '#fdf1d6' },
-      off:     { dot: '#d0006f', fg: '#d0006f', bg: '#fbe0ee' },
-      nodata:  { dot: '#9db0ac', fg: '#8a9693', bg: '#eef1f0' },
+      over:    { dot: '#68d2df', fg: '#68d2df', bg: '#0d3d4d' },
+      ontrack: { dot: '#c4d600', fg: '#c4d600', bg: '#3d4400' },
+      risk:    { dot: '#f0ab00', fg: '#f0ab00', bg: '#4d3300' },
+      off:     { dot: '#ff4d9d', fg: '#ff4d9d', bg: '#4d0d26' },
+      nodata:  { dot: '#7d8d8a', fg: '#7d8d8a', bg: '#262d2c' },
     },
     dark: {
-      over:    { dot: '#68d2df', fg: '#7fdbe6', bg: 'rgba(104, 210, 223, 0.14)' },
-      ontrack: { dot: '#c4d600', fg: '#cfe23a', bg: 'rgba(196, 214, 0, 0.14)' },
-      risk:    { dot: '#f0ab00', fg: '#f6c244', bg: 'rgba(240, 171, 0, 0.16)' },
-      off:     { dot: '#ff4d9d', fg: '#ff77b4', bg: 'rgba(208, 0, 111, 0.22)' },
-      nodata:  { dot: '#7d8d8a', fg: 'rgba(240, 235, 239, 0.45)', bg: 'rgba(255, 255, 255, 0.05)' },
+      over:    { dot: '#68d2df', fg: '#68d2df', bg: '#0d3d4d' },
+      ontrack: { dot: '#c4d600', fg: '#c4d600', bg: '#3d4400' },
+      risk:    { dot: '#f0ab00', fg: '#f0ab00', bg: '#4d3300' },
+      off:     { dot: '#ff4d9d', fg: '#ff4d9d', bg: '#4d0d26' },
+      nodata:  { dot: '#7d8d8a', fg: '#7d8d8a', bg: '#262d2c' },
     },
   },
 };
