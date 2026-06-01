@@ -38,24 +38,71 @@
   --btn-primary-bg:       #830051;
   --btn-primary-hover:    #4d0030;
 
+  /* ── Light Mode Surface & Text Tokens ───────────────
+     Semantic layer for light UI. Apply inside
+     html[data-theme="light"] { } in your app.
+     Pairs with the --dark-* set below.                 */
+  --light-bg-base:         #eef1f0;   /* page background   */
+  --light-bg-surface:      #ffffff;   /* cards, panels     */
+  --light-bg-surface-alt:  #fafbfb;   /* controls, headers */
+  --light-tint-row:        #faf7f9;   /* group/tinted rows */
+
+  --light-text:            #2b2f2f;
+  --light-text-secondary:  #5e6565;
+  --light-text-muted:      #90999a;
+
+  --light-border:          #e6eae9;
+  --light-border-strong:   #d6dcdb;
+
   /* ── Dark Mode Surface & Text Tokens ────────────────
-     Reference values for dark UI. Apply inside
+     Warm, mulberry-tinted dark surfaces. Apply inside
      html[data-theme="dark"] { } or
      @media (prefers-color-scheme: dark) { } in your app.
      These are NOT active by default — the consuming app
      decides when to use them.                          */
-  --dark-bg-base:        #111118;   /* page background   */
-  --dark-bg-surface-1:   #16121e;   /* cards, panels     */
-  --dark-bg-surface-2:   #1a1020;   /* controls, headers */
-  --dark-bg-surface-3:   #131a28;   /* elevated rows     */
+  --dark-bg-base:        #171219;   /* page background   */
+  --dark-bg-surface-1:   #221a26;   /* cards, panels     */
+  --dark-bg-surface-2:   #2a2030;   /* controls, headers */
+  --dark-bg-surface-3:   #2f2436;   /* elevated rows     */
+  --dark-tint-row:       rgba(255, 255, 255, 0.03);
 
-  --dark-text:           rgba(255, 255, 255, 0.90);
-  --dark-text-secondary: rgba(255, 255, 255, 0.82);
-  --dark-text-muted:     rgba(255, 255, 255, 0.50);
-  --dark-text-disabled:  rgba(255, 255, 255, 0.25);
+  --dark-text:           #f1ecef;
+  --dark-text-secondary: rgba(241, 236, 239, 0.62);
+  --dark-text-muted:     rgba(241, 236, 239, 0.40);
+  --dark-text-disabled:  rgba(241, 236, 239, 0.25);
 
-  --dark-border:         rgba(255, 255, 255, 0.07);
-  --dark-border-strong:  rgba(255, 255, 255, 0.14);
+  --dark-border:         rgba(255, 255, 255, 0.09);
+  --dark-border-strong:  rgba(255, 255, 255, 0.16);
+
+  /* ── Theme-adapted brand tokens ─────────────────────
+     Some brand inks need to lighten on dark surfaces to
+     stay legible. Light value = the --color-* primitive
+     above; --dark-color-* is the dark-theme substitute. */
+  --dark-color-purple:    #b48ad0;   /* light: #3c1053 */
+  --dark-color-graphite:  #c8cccb;   /* light: #3f4444 */
+
+  /* ── Sidebar dark variant ───────────────────────────
+     --sidebar-bg (above) is the light-theme gradient.   */
+  --sidebar-bg-dark:      linear-gradient(180deg, #4d0030 0%, #2a0a1d 100%);
+
+  /* ── Status / semantic colours ──────────────────────
+     Shared status palette for plan-vs-fact dashboards:
+     over (overachieved) · ontrack · risk · off · nodata.
+     Each has dot (marker), fg (text), bg (chip fill).
+     Light values here; --dark-status-* below.
+     NOTE: this is part of the brand system. FTE-heatmap
+     and department-badge colours are NOT (functional).  */
+  --status-over-dot:     #003865;  --status-over-fg:     #003865;  --status-over-bg:     #e6eef5;
+  --status-ontrack-dot:  #c4d600;  --status-ontrack-fg:  #5f7000;  --status-ontrack-bg:  #f1f5d6;
+  --status-risk-dot:     #f0ab00;  --status-risk-fg:     #8a6200;  --status-risk-bg:     #fdf1d6;
+  --status-off-dot:      #d0006f;  --status-off-fg:      #d0006f;  --status-off-bg:      #fbe0ee;
+  --status-nodata-dot:   #9db0ac;  --status-nodata-fg:   #8a9693;  --status-nodata-bg:   #eef1f0;
+
+  --dark-status-over-dot:    #68d2df;  --dark-status-over-fg:    #7fdbe6;  --dark-status-over-bg:    rgba(104, 210, 223, 0.14);
+  --dark-status-ontrack-dot: #c4d600;  --dark-status-ontrack-fg: #cfe23a;  --dark-status-ontrack-bg: rgba(196, 214, 0, 0.14);
+  --dark-status-risk-dot:    #f0ab00;  --dark-status-risk-fg:    #f6c244;  --dark-status-risk-bg:    rgba(240, 171, 0, 0.16);
+  --dark-status-off-dot:     #ff4d9d;  --dark-status-off-fg:     #ff77b4;  --dark-status-off-bg:     rgba(208, 0, 111, 0.22);
+  --dark-status-nodata-dot:  #7d8d8a;  --dark-status-nodata-fg:  rgba(240, 235, 239, 0.45);  --dark-status-nodata-bg: rgba(255, 255, 255, 0.05);
 }
 
 /* Typography base — Google Fonts loaded by host page */

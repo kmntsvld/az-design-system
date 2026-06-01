@@ -92,9 +92,10 @@ style={{ background: window.AZ_DS.sidebar.bg }}
 style={{ color: window.AZ_DS.colors.mulberry }}
 ```
 
-## Dark Mode Tokens
+## Theme Tokens (light + dark)
 
-`tokens.css` и `tokens.js` содержат набор `--dark-*` токенов / `window.AZ_DS.darkMode.*`.
+`tokens.css` / `tokens.js` содержат семантический слой для **обеих тем**:
+`--light-*` / `window.AZ_DS.lightMode.*` и `--dark-*` / `window.AZ_DS.darkMode.*`.
 Это **референсные значения** — они не применяются автоматически.
 Приложение само решает когда их использовать:
 
@@ -114,29 +115,54 @@ html[data-theme="dark"] {
 }
 ```
 
-**Поверхности (от глубокой к приподнятой):**
+**Тёмные поверхности — тёплые, с подтоном mulberry (от глубокой к приподнятой):**
 | Токен | Hex | Применение |
 |---|---|---|
-| `--dark-bg-base` | `#111118` | Фон страницы |
-| `--dark-bg-surface-1` | `#16121e` | Карточки, панели |
-| `--dark-bg-surface-2` | `#1a1020` | Контролы, шапки секций |
-| `--dark-bg-surface-3` | `#131a28` | Приподнятые строки |
+| `--dark-bg-base` | `#171219` | Фон страницы |
+| `--dark-bg-surface-1` | `#221a26` | Карточки, панели |
+| `--dark-bg-surface-2` | `#2a2030` | Контролы, шапки секций |
+| `--dark-bg-surface-3` | `#2f2436` | Приподнятые строки |
+| `--dark-tint-row` | `rgba(255,255,255,0.03)` | Тонированные/групповые строки |
 
-**Текст:**
-| Токен | Opacity | Применение |
+**Светлые поверхности (зеркало dark):**
+| Токен | Hex | Применение |
 |---|---|---|
-| `--dark-text` | 90% | Основной текст |
-| `--dark-text-secondary` | 82% | Вторичный текст |
-| `--dark-text-muted` | 50% | Метки, подписи |
-| `--dark-text-disabled` | 25% | Неактивные элементы |
+| `--light-bg-base` | `#eef1f0` | Фон страницы |
+| `--light-bg-surface` | `#ffffff` | Карточки, панели |
+| `--light-bg-surface-alt` | `#fafbfb` | Контролы, шапки секций |
+| `--light-tint-row` | `#faf7f9` | Тонированные/групповые строки |
 
-**Границы:** `--dark-border` (7% white) / `--dark-border-strong` (14% white)
+**Текст:** `--dark-text` `#f1ecef` (light: `--light-text` `#2b2f2f`), `-secondary`, `-muted`, `-disabled`.
+**Границы:** `--dark-border` / `--dark-border-strong` (light: `--light-border` / `--light-border-strong`).
+
+**Темо-адаптация бренда:** `--dark-color-purple` `#b48ad0`, `--dark-color-graphite` `#c8cccb`
+(светлые примитивы — `--color-purple` `#3c1053`, `--color-graphite` `#3f4444`).
+**Тёмный сайдбар:** `--sidebar-bg-dark` (светлый — `--sidebar-bg`).
+
+## Status Tokens (semantic — part of the brand system)
+
+Общая палитра статусов для plan-vs-fact дашбордов: `over` · `ontrack` · `risk` · `off` · `nodata`.
+У каждого — `dot` (маркер), `fg` (текст), `bg` (заливка чипа), на обе темы.
+CSS: `--status-<name>-{dot,fg,bg}` (light) и `--dark-status-<name>-{dot,fg,bg}` (dark).
+JS: `window.AZ_DS.status.light.<name>` / `.dark.<name>`.
+
+| Статус | Значение | Light dot |
+|---|---|---|
+| `over` | Overachieved | `#003865` |
+| `ontrack` | On Track | `#c4d600` |
+| `risk` | At Risk | `#f0ab00` |
+| `off` | Off Track | `#d0006f` |
+| `nodata` | No Data | `#9db0ac` |
 
 ## What does NOT belong here
 
 - FTE heatmap colours — functional data visualisation, not brand
 - Department badge colours — functional, intentionally non-brand
 - Any React components or markup
+
+> Примечание: **статус-цвета** (over/ontrack/risk/off/nodata) теперь **входят** в систему
+> (см. Status Tokens) — это семантический бренд-слой. Исключены только FTE-heatmap (градиент
+> визуализации) и бейджи отделов.
 
 ## Sync rule
 
