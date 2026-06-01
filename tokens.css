@@ -92,11 +92,11 @@
      Light values here; --dark-status-* below.
      NOTE: this is part of the brand system. FTE-heatmap
      and department-badge colours are NOT (functional).  */
-  --status-over-dot:     #68d2df;  --status-over-fg:     #68d2df;  --status-over-bg:     #0d3d4d;
-  --status-ontrack-dot:  #c4d600;  --status-ontrack-fg:  #c4d600;  --status-ontrack-bg:  #3d4400;
-  --status-risk-dot:     #f0ab00;  --status-risk-fg:     #f0ab00;  --status-risk-bg:     #4d3300;
-  --status-off-dot:      #ff4d9d;  --status-off-fg:      #ff4d9d;  --status-off-bg:      #4d0d26;
-  --status-nodata-dot:   #7d8d8a;  --status-nodata-fg:   #7d8d8a;  --status-nodata-bg:   #262d2c;
+  --status-over-dot:     #003865;  --status-over-fg:     #003865;  --status-over-bg:     #e6eef5;
+  --status-ontrack-dot:  #c4d600;  --status-ontrack-fg:  #5f7000;  --status-ontrack-bg:  #f1f5d6;
+  --status-risk-dot:     #f0ab00;  --status-risk-fg:     #8a6200;  --status-risk-bg:     #fdf1d6;
+  --status-off-dot:      #d0006f;  --status-off-fg:      #d0006f;  --status-off-bg:      #fbe0ee;
+  --status-nodata-dot:   #9db0ac;  --status-nodata-fg:   #8a9693;  --status-nodata-bg:   #eef1f0;
 
   --dark-status-over-dot:    #68d2df;  --dark-status-over-fg:    #68d2df;  --dark-status-over-bg:    #0d3d4d;
   --dark-status-ontrack-dot: #c4d600;  --dark-status-ontrack-fg: #c4d600;  --dark-status-ontrack-bg: #3d4400;
