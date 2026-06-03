@@ -1,0 +1,198 @@
+/* ============================================================================
+   AstraZeneca Design System — colors_and_type.css
+   Foundations: brand color primitives, semantic theme layers, typography.
+   Mirrors the canonical token source: github.com/kmntsvld/az-design-system
+   (tokens.css / tokens.js). Keep brand hex values in sync with that repo.
+   ============================================================================ */
+
+/* Fonts are loaded from Google Fonts in the host page <head>:
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+*/
+
+:root {
+  /* ── Brand primitives ─────────────────────────────────────────────────── */
+  /* Primary (dominant — use freely) */
+  --color-mulberry:       #830051;   /* primary — buttons, sidebar, key accents */
+  --color-dark-mulberry:  #4d0030;   /* hover, gradient dark end, deep contrast */
+  --color-magenta:        #d0006f;   /* highlights, badges, warnings           */
+  --color-gold:           #f0ab00;   /* alerts, status, "releasing" emphasis   */
+
+  /* Neutrals */
+  --color-graphite:       #3f4444;   /* body text, icons       */
+  --color-platinum:       #9db0ac;   /* secondary text, borders */
+  --color-light-platinum: #ebefee;   /* dividers, subtle bg     */
+  --color-white:          #ffffff;
+
+  /* Accent / illuminating — use sparingly. NOT for backgrounds or body text. */
+  --color-purple:         #3c1053;
+  --color-navy:           #003865;
+  --color-light-blue:     #68d2df;
+  --color-lime-green:     #c4d600;
+
+  /* Theme-adapted brand inks — substitute on dark surfaces for legibility. */
+  --dark-color-purple:    #b48ad0;   /* light: #3c1053 */
+  --dark-color-graphite:  #c8cccb;   /* light: #3f4444 */
+
+  /* ── Brand type roles ─────────────────────────────────────────────────── */
+  --font-display: 'Roboto Slab', Georgia, serif;   /* headings, titles, quotes */
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Data/numbers use the SAME Inter family with tabular figures (tnum) for column
+     alignment — no separate monospace face. --font-mono kept as an alias for back-compat. */
+  --font-mono:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Type scale (px) — data-dense product UI; minimum body 13px */
+  --text-display: 28px;   --lh-display: 1.15;   --ls-display: -0.01em;
+  --text-h1:      20px;   --lh-h1:      1.2;    --ls-h1:      -0.01em;
+  --text-h2:      15px;   --lh-h2:      1.3;
+  --text-h3:      13px;   --lh-h3:      1.4;
+  --text-body:    13px;   --lh-body:    1.45;
+  --text-sm:      12px;
+  --text-xs:      11px;
+  --text-micro:   9.5px;  --ls-micro:   0.06em;  /* uppercase eyebrows / table heads */
+
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-bold:    700;
+
+  /* ── Composite brand tokens ───────────────────────────────────────────── */
+  --sidebar-bg:           linear-gradient(180deg, #830051 0%, #4d0030 100%);
+  --sidebar-bg-dark:      linear-gradient(180deg, #4d0030 0%, #2a0a1d 100%);
+  --topbar-bg:            linear-gradient(135deg, #830051 0%, #4d0030 100%);
+  --sidebar-divider:      rgba(255, 255, 255, 0.15);
+  --sidebar-text-secondary: rgba(255, 255, 255, 0.6);
+  --sidebar-text-muted:   rgba(255, 255, 255, 0.45);
+  --nav-active-bg:        rgba(255, 255, 255, 0.2);
+  --nav-hover-bg:         rgba(255, 255, 255, 0.1);
+  --nav-input-bg:         rgba(255, 255, 255, 0.1);
+  --nav-input-border:     rgba(255, 255, 255, 0.2);
+
+  --focus-ring:           #830051;
+  --btn-primary-bg:       #830051;
+  --btn-primary-hover:    #4d0030;
+
+  /* Corner radii — rounded-xl cards, rounded-lg controls */
+  --radius-card:   14px;
+  --radius-lg:     10px;
+  --radius-md:     8px;
+  --radius-sm:     6px;
+  --radius-pill:   20px;
+
+  /* Elevation — subtle, data is the focus */
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.06);
+  --shadow-card:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-menu:  0 8px 28px rgba(0,0,0,0.18);
+  --shadow-menu-dark: 0 8px 28px rgba(0,0,0,0.35);
+
+  /* ── LIGHT semantic surfaces / text / borders ─────────────────────────── */
+  --light-bg-base:        #eef1f0;   /* page background   */
+  --light-bg-surface:     #ffffff;   /* cards, panels     */
+  --light-bg-surface-alt: #fafbfb;   /* controls, headers */
+  --light-tint-row:       #faf7f9;   /* group/tinted rows */
+  --light-text:           #2b2f2f;
+  --light-text-secondary: #5e6565;
+  --light-text-muted:     #90999a;
+  --light-border:         #e6eae9;
+  --light-border-strong:  #d6dcdb;
+
+  /* ── DARK semantic surfaces (warm, mulberry-tinted) ───────────────────── */
+  --dark-bg-base:         #171219;   /* page background   */
+  --dark-bg-surface-1:    #221a26;   /* cards, panels     */
+  --dark-bg-surface-2:    #2a2030;   /* controls, headers */
+  --dark-bg-surface-3:    #2f2436;   /* elevated rows     */
+  --dark-tint-row:        rgba(255, 255, 255, 0.03);
+  --dark-text:            #f1ecef;
+  --dark-text-secondary:  rgba(241, 236, 239, 0.62);
+  --dark-text-muted:      rgba(241, 236, 239, 0.40);
+  --dark-text-disabled:   rgba(241, 236, 239, 0.25);
+  --dark-border:          rgba(255, 255, 255, 0.09);
+  --dark-border-strong:   rgba(255, 255, 255, 0.16);
+
+  /* ── Status / semantic colours (plan-vs-fact dashboards) ──────────────── */
+  /* over (overachieved) · ontrack · risk · off · nodata. Each: dot / fg / bg */
+  --status-over-dot:     #003865;  --status-over-fg:     #003865;  --status-over-bg:     #e6eef5;
+  --status-ontrack-dot:  #3f9e2c;  --status-ontrack-fg:  #2f6f1d;  --status-ontrack-bg:  #e2f3d8;
+  --status-risk-dot:     #f0ab00;  --status-risk-fg:     #8a6200;  --status-risk-bg:     #fdf1d6;
+  --status-off-dot:      #d0006f;  --status-off-fg:      #d0006f;  --status-off-bg:      #fbe0ee;
+  --status-nodata-dot:   #9db0ac;  --status-nodata-fg:   #8a9693;  --status-nodata-bg:   #eef1f0;
+
+  --dark-status-over-dot:    #68d2df;  --dark-status-over-fg:    #68d2df;  --dark-status-over-bg:    #0d3d4d;
+  --dark-status-ontrack-dot: #5cc23f;  --dark-status-ontrack-fg: #6fce4e;  --dark-status-ontrack-bg: #173a0d;
+  --dark-status-risk-dot:    #f0ab00;  --dark-status-risk-fg:    #f0ab00;  --dark-status-risk-bg:    #4d3300;
+  --dark-status-off-dot:     #ff4d9d;  --dark-status-off-fg:     #ff4d9d;  --dark-status-off-bg:     #4d0d26;
+  --dark-status-nodata-dot:  #7d8d8a;  --dark-status-nodata-fg:  #7d8d8a;  --dark-status-nodata-bg:  #262d2c;
+
+  /* ── FTE heat scale (functional data-viz — NOT brand, do not restyle) ───
+     Diverging around full utilisation: 100% = ideal (green). Grey = idle,
+     orange/amber = under-loaded, green ≈ full, amber→red = over-loaded. */
+  --fte-0-bg:    #f1f5f9;  --fte-0-fg:    #cbd5e1;   /* 0% — no allocation       */
+  --fte-25-bg:   #e2e8f0;  --fte-25-fg:   #64748b;   /* ≤25% — minimal (neutral grey) */
+  --fte-50-bg:   #fb923c;  --fte-50-fg:   #7c2d12;   /* ≤50% — under-utilised    */
+  --fte-75-bg:   #fde68a;  --fte-75-fg:   #78350f;   /* ≤75% — slightly under    */
+  --fte-100-bg:  #86efac;  --fte-100-fg:  #14532d;   /* ≤100% — ideal ≈ full     */
+  --fte-110-bg:  #fde68a;  --fte-110-fg:  #78350f;   /* 100–110% — slightly over */
+  --fte-over-bg: #f87171;  --fte-over-fg: #7f1d1d;   /* >110% — overloaded       */
+
+  /* ── Default semantic aliases (resolve to LIGHT theme) ────────────────── */
+  --bg-base:       var(--light-bg-base);
+  --bg-surface:    var(--light-bg-surface);
+  --bg-surface-alt:var(--light-bg-surface-alt);
+  --tint-row:      var(--light-tint-row);
+  --text:          var(--light-text);
+  --text-secondary:var(--light-text-secondary);
+  --text-muted:    var(--light-text-muted);
+  --border:        var(--light-border);
+  --border-strong: var(--light-border-strong);
+  --shadow:        var(--shadow-card);
+}
+
+/* Dark theme: flip the semantic aliases. Opt in with html[data-theme="dark"]. */
+html[data-theme="dark"] {
+  --bg-base:        var(--dark-bg-base);
+  --bg-surface:     var(--dark-bg-surface-1);
+  --bg-surface-alt: var(--dark-bg-surface-2);
+  --tint-row:       var(--dark-tint-row);
+  --text:           var(--dark-text);
+  --text-secondary: var(--dark-text-secondary);
+  --text-muted:     var(--dark-text-muted);
+  --border:         var(--dark-border);
+  --border-strong:  var(--dark-border-strong);
+  --sidebar-bg:     var(--sidebar-bg-dark);
+  --shadow:         var(--shadow-menu-dark);
+}
+
+/* ── Base typography ──────────────────────────────────────────────────────
+   Apply by including this file and using the semantic roles below. */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, blockquote {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+}
+h1 { font-size: var(--text-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); }
+h2 { font-size: var(--text-h2); line-height: var(--lh-h2); }
+h3 { font-size: var(--text-h3); line-height: var(--lh-h3); }
+
+/* Eyebrow / table-head / micro-label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-micro);
+  color: var(--text-muted);
+}
+
+/* Tabular numerals for data cells — Inter with tnum keeps number columns aligned */
+.data, td.val, .mono {
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}

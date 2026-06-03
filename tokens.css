@@ -91,27 +91,38 @@
      Each has dot (marker), fg (text), bg (chip fill).
      Light values here; --dark-status-* below.
      NOTE: this is part of the brand system. FTE-heatmap
-     and department-badge colours are NOT (functional).  */
+     and department-badge colours are NOT (functional).
+
+     CHANGED 2026-06 — ontrack: lime #c4d600 → green
+     #3f9e2c. Better contrast vs. risk (gold #f0ab00).  */
   --status-over-dot:     #003865;  --status-over-fg:     #003865;  --status-over-bg:     #e6eef5;
-  --status-ontrack-dot:  #c4d600;  --status-ontrack-fg:  #5f7000;  --status-ontrack-bg:  #f1f5d6;
+  --status-ontrack-dot:  #3f9e2c;  --status-ontrack-fg:  #2f6f1d;  --status-ontrack-bg:  #e2f3d8;
   --status-risk-dot:     #f0ab00;  --status-risk-fg:     #8a6200;  --status-risk-bg:     #fdf1d6;
   --status-off-dot:      #d0006f;  --status-off-fg:      #d0006f;  --status-off-bg:      #fbe0ee;
   --status-nodata-dot:   #9db0ac;  --status-nodata-fg:   #8a9693;  --status-nodata-bg:   #eef1f0;
 
   --dark-status-over-dot:    #68d2df;  --dark-status-over-fg:    #68d2df;  --dark-status-over-bg:    #0d3d4d;
-  --dark-status-ontrack-dot: #c4d600;  --dark-status-ontrack-fg: #c4d600;  --dark-status-ontrack-bg: #3d4400;
+  --dark-status-ontrack-dot: #5cc23f;  --dark-status-ontrack-fg: #6fce4e;  --dark-status-ontrack-bg: #173a0d;
   --dark-status-risk-dot:    #f0ab00;  --dark-status-risk-fg:    #f0ab00;  --dark-status-risk-bg:    #4d3300;
   --dark-status-off-dot:     #ff4d9d;  --dark-status-off-fg:     #ff4d9d;  --dark-status-off-bg:     #4d0d26;
   --dark-status-nodata-dot:  #7d8d8a;  --dark-status-nodata-fg:  #7d8d8a;  --dark-status-nodata-bg:  #262d2c;
 }
 
-/* Typography base — Google Fonts loaded by host page */
+/* Typography base — Google Fonts loaded by host page:
+   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 h1, h2, h3, h4, blockquote {
   font-family: 'Roboto Slab', Georgia, serif;
+}
+
+/* Tabular figures for data cells — no separate mono font;
+   use Inter with font-variant-numeric: tabular-nums instead. */
+.az-data, .az-val {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
 /* Sidebar utility class */

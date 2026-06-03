@@ -41,6 +41,8 @@ window.AZ_DS = {
   font: {
     heading: "'Roboto Slab', Georgia, serif",
     body:    "'Inter', -apple-system, sans-serif",
+    // No separate mono face. Use Inter with tabular-nums for data columns:
+    //   style={{ fontVariantNumeric: 'tabular-nums' }}
   },
   // Semantic surface/text/border layer for light UI. Pairs with darkMode.
   lightMode: {
@@ -82,17 +84,20 @@ window.AZ_DS = {
   },
   // Shared status palette (plan-vs-fact dashboards). Each: dot / fg / bg.
   // Part of the brand system — unlike FTE-heatmap & department badges.
+  //
+  // CHANGED 2026-06 — ontrack: lime #c4d600 → green #3f9e2c
+  //   Better contrast vs. risk (gold #f0ab00).
   status: {
     light: {
       over:    { dot: '#003865', fg: '#003865', bg: '#e6eef5' },
-      ontrack: { dot: '#c4d600', fg: '#5f7000', bg: '#f1f5d6' },
+      ontrack: { dot: '#3f9e2c', fg: '#2f6f1d', bg: '#e2f3d8' },
       risk:    { dot: '#f0ab00', fg: '#8a6200', bg: '#fdf1d6' },
       off:     { dot: '#d0006f', fg: '#d0006f', bg: '#fbe0ee' },
       nodata:  { dot: '#9db0ac', fg: '#8a9693', bg: '#eef1f0' },
     },
     dark: {
       over:    { dot: '#68d2df', fg: '#68d2df', bg: '#0d3d4d' },
-      ontrack: { dot: '#c4d600', fg: '#c4d600', bg: '#3d4400' },
+      ontrack: { dot: '#5cc23f', fg: '#6fce4e', bg: '#173a0d' },
       risk:    { dot: '#f0ab00', fg: '#f0ab00', bg: '#4d3300' },
       off:     { dot: '#ff4d9d', fg: '#ff4d9d', bg: '#4d0d26' },
       nodata:  { dot: '#7d8d8a', fg: '#7d8d8a', bg: '#262d2c' },

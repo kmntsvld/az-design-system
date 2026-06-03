@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D&D Resource Plan — UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { font-family: var(--font-body); background: #f8fafc; color: #1e293b; }
+  h1,h2,h3 { font-family: var(--font-display); }
+  .rp-app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+  /* Topbar */
+  .rp-topbar { flex-shrink: 0; padding: 0 20px; height: 56px; background: linear-gradient(135deg,#830051 0%,#4d0030 100%);
+    display: flex; align-items: center; gap: 20px; }
+  .rp-mark { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .rp-badge { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center; color: #fff; font: 700 13px var(--font-display); }
+  .rp-app .rp-app { all: unset; }
+  .rp-app span.rp-app { color: #fff; font: 700 15px var(--font-display); letter-spacing: 0.01em; white-space: nowrap; }
+  .rp-mark { white-space: nowrap; }
+  .rp-vdiv { width: 1px; height: 24px; background: rgba(255,255,255,0.2); }
+  .rp-pillrow, .rp-chiprow { display: flex; gap: 6px; }
+  .rp-chiprow { flex: 1; overflow-x: auto; }
+  .rp-pill { padding: 4px 14px; border-radius: 20px; font: 600 12px var(--font-body); cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.3); background: transparent; color: rgba(255,255,255,0.8); transition: all .15s; }
+  .rp-pill.active { background: #fff; color: #830051; border-color: #fff; }
+  .dept-chip { padding: 4px 12px; border-radius: 20px; font: 500 12px var(--font-body); cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75); background: transparent; transition: all .15s; white-space: nowrap; }
+  .dept-chip:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .dept-chip.active { background: #fff; color: #830051; border-color: #fff; }
+  .rp-search { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff;
+    border-radius: 8px; padding: 6px 12px; font-size: 13px; outline: none; width: 180px; flex-shrink: 0; }
+  .rp-search::placeholder { color: rgba(255,255,255,0.5); }
+  .rp-search:focus { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+  .rp-live { color: rgba(255,255,255,0.5); font-size: 11px; flex-shrink: 0; }
+
+  /* Decision panel */
+  .rp-decision { flex-shrink: 0; padding: 12px 20px; background: #fff; border-bottom: 1px solid #e2e8f0; display: flex; gap: 12px; }
+  .metric-card { border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform .1s; }
+  .metric-card:hover { transform: translateY(-1px); }
+  .rp-controls { margin-left: auto; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .rp-seg { display: flex; background: #f1f5f9; border-radius: 8px; padding: 2px; gap: 2px; }
+  .rp-seg button { padding: 4px 10px; border-radius: 6px; font: 500 12px var(--font-body); cursor: pointer; border: none;
+    background: transparent; color: #64748b; transition: all .15s; white-space: nowrap; }
+  .rp-seg { flex-shrink: 0; }
+  .rp-seg button.active { background: #fff; color: #830051; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+  .rp-legend { display: flex; gap: 4px; align-items: center; }
+  .rp-legend > div { display: flex; align-items: center; gap: 3px; font-size: 10px; color: #94a3b8; }
+  .rp-legend span { width: 12px; height: 12px; border-radius: 2px; }
+
+  /* Summary */
+  .rp-summary-toggle { flex-shrink: 0; padding: 5px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0;
+    cursor: pointer; display: flex; align-items: center; gap: 8px; user-select: none; white-space: nowrap; }
+  .rp-summary { flex-shrink: 0; padding: 14px 20px; background: #fafafa; border-bottom: 1px solid #e2e8f0; display: flex; gap: 28px; }
+
+  /* Matrix */
+  .matrix-wrap { overflow: auto; flex: 1; }
+  .matrix-table { border-collapse: collapse; min-width: 100%; }
+  .h-name { position: sticky; left: 0; top: 0; z-index: 10; background: #f8fafc; padding: 8px 12px; text-align: left;
+    font: 600 11px var(--font-body); color: #64748b; min-width: 200px; border-right: 1px solid #e2e8f0; border-bottom: 2px solid #e2e8f0; cursor: pointer; }
+  .h-ytg { position: sticky; top: 0; z-index: 3; background: #f8fafc; padding: 8px 10px; font: 600 11px var(--font-body);
+    color: #64748b; border-bottom: 2px solid #e2e8f0; white-space: nowrap; text-align: right; min-width: 64px; cursor: pointer; }
+  .h-month { position: sticky; top: 0; z-index: 3; width: 48px; min-width: 48px; background: #f8fafc; text-align: center;
+    font: 600 11px var(--font-body); color: #64748b; padding: 8px 0; border-bottom: 2px solid #e2e8f0; border-right: 1px solid #e2e8f0; cursor: pointer; }
+  .h-month.cur { background: #eff6ff; color: #2563eb; }
+  .h-month .now { font-size: 9px; color: #93c5fd; font-weight: 400; }
+  .sort { color: #cbd5e1; font-size: 9px; margin-left: 3px; }
+
+  .m-row { cursor: pointer; }
+  .m-name { position: sticky; left: 0; z-index: 4; background: #fff; min-width: 200px; max-width: 200px; padding: 0 12px;
+    border-right: 1px solid #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #f1f5f9; }
+  .m-name.sub { padding: 4px 12px; color: #475569; font-size: 11px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+  .m-row:hover .m-name { background: #f0f9ff; }
+  .m-row.expanded .m-name { background: #eff6ff; font-weight: 600; color: #1d4ed8; }
+  .m-ytg { padding: 0 10px; font: 600 11px var(--font-body); white-space: nowrap; text-align: right; border-bottom: 1px solid #f1f5f9; }
+  .proj-row .m-ytg, .proj-emp-row .m-ytg { background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-size: 10px; }
+  .m-cell { width: 48px; min-width: 48px; max-width: 48px; text-align: center; font: 600 11px var(--font-body);
+    border-right: 1px solid rgba(0,0,0,0.04); border-bottom: 1px solid rgba(0,0,0,0.04); transition: filter .1s; }
+  .m-cell:hover { filter: brightness(0.92); }
+
+  .grp-name { position: sticky; left: 0; z-index: 4; background: #f0f4f8; padding: 7px 12px; border-bottom: 2px solid #cbd5e1;
+    border-right: 1px solid #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+  .grp-ytg { background: #f0f4f8; padding: 0 10px; font: 700 12px var(--font-body); color: #1e293b; white-space: nowrap;
+    border-bottom: 2px solid #cbd5e1; text-align: right; min-width: 64px; }
+  .grp-cell { background: #f0f4f8; border-bottom: 2px solid #cbd5e1; border-right: 1px solid rgba(0,0,0,0.04); }
+
+  .rp-empty { display: flex; align-items: center; justify-content: center; flex: 1; color: #94a3b8; font-size: 14px; }
+
+  ::-webkit-scrollbar { height: 11px; width: 11px; }
+  ::-webkit-scrollbar-track { background: #f0eef2; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 6px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="data.js"></script>
+<script type="text/babel" src="helpers.jsx"></script>
+<script type="text/babel" src="Topbar.jsx"></script>
+<script type="text/babel" src="DecisionPanel.jsx"></script>
+<script type="text/babel" src="ExecutiveSummary.jsx"></script>
+<script type="text/babel" src="Matrix.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

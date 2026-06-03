@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .dc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .dc {
+    position: relative; border-radius: 12px; padding: 14px 15px 13px;
+    border: 1px solid var(--dc-bd); background: var(--dc-bg);
+    display: flex; flex-direction: column; gap: 11px; cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .dc:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
+  .dc-top { display: flex; align-items: center; gap: 10px; }
+  .dc-chip {
+    width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+    background: var(--dc-acc); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .dc-chip svg { width: 18px; height: 18px; stroke-width: 2.25; }
+  .dc-label { font-size: 11px; line-height: 1.3; color: #64748b; font-weight: 500; }
+  .dc-valrow { display: flex; align-items: baseline; gap: 8px; }
+  .dc-val { font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--dc-acc); line-height: 1; letter-spacing: -0.02em; }
+  .dc-unit { font-size: 12px; font-weight: 500; color: #94a3b8; }
+  .dc-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .dc-delta { display: inline-flex; align-items: center; gap: 3px; font-size: 10.5px; font-weight: 600; color: var(--dc-acc); }
+  .dc-delta svg { width: 12px; height: 12px; stroke-width: 2.5; }
+  .dc-spark { display: flex; align-items: flex-end; gap: 2.5px; height: 22px; }
+  .dc-spark i { width: 4px; border-radius: 1.5px; background: var(--dc-acc); display: block; }
+</style>
+</head>
+<body>
+<div class="card-wrap">
+  <div class="label-xs">Decision metric cards</div>
+  <div class="dc-grid">
+
+    <div class="dc" style="--dc-bg:#fef2f2;--dc-bd:#fecaca;--dc-acc:#dc2626">
+      <div class="dc-top">
+        <span class="dc-chip"><i data-lucide="triangle-alert"></i></span>
+        <span class="dc-label">Перегружены<br>сейчас</span>
+      </div>
+      <div class="dc-valrow"><span class="dc-val">7</span><span class="dc-unit">чел.</span></div>
+      <div class="dc-foot">
+        <span class="dc-delta"><i data-lucide="arrow-up-right"></i>+2 с апреля</span>
+        <span class="dc-spark"><i style="height:8px;opacity:.35"></i><i style="height:11px;opacity:.45"></i><i style="height:9px;opacity:.55"></i><i style="height:14px;opacity:.7"></i><i style="height:13px;opacity:.8"></i><i style="height:18px;opacity:.9"></i><i style="height:22px"></i></span>
+      </div>
+    </div>
+
+    <div class="dc" style="--dc-bg:#fffbeb;--dc-bd:#fde68a;--dc-acc:#d97706">
+      <div class="dc-top">
+        <span class="dc-chip"><i data-lucide="user-minus"></i></span>
+        <span class="dc-label">Высвобождаются<br>через 3 мес.</span>
+      </div>
+      <div class="dc-valrow"><span class="dc-val">2.4</span><span class="dc-unit">FTE</span></div>
+      <div class="dc-foot">
+        <span class="dc-delta"><i data-lucide="users"></i>3 сотрудника</span>
+        <span class="dc-spark"><i style="height:20px"></i><i style="height:17px;opacity:.85"></i><i style="height:18px;opacity:.8"></i><i style="height:12px;opacity:.65"></i><i style="height:13px;opacity:.6"></i><i style="height:8px;opacity:.45"></i><i style="height:6px;opacity:.35"></i></span>
+      </div>
+    </div>
+
+    <div class="dc" style="--dc-bg:#f0fdf4;--dc-bd:#bbf7d0;--dc-acc:#16a34a">
+      <div class="dc-top">
+        <span class="dc-chip"><i data-lucide="user-check"></i></span>
+        <span class="dc-label">Слабозагружены<br>(&lt;50%)</span>
+      </div>
+      <div class="dc-valrow"><span class="dc-val">11</span><span class="dc-unit">чел.</span></div>
+      <div class="dc-foot">
+        <span class="dc-delta"><i data-lucide="pie-chart"></i>26% команды</span>
+        <span class="dc-spark"><i style="height:9px;opacity:.4"></i><i style="height:12px;opacity:.5"></i><i style="height:11px;opacity:.6"></i><i style="height:15px;opacity:.7"></i><i style="height:14px;opacity:.8"></i><i style="height:19px;opacity:.9"></i><i style="height:21px"></i></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body></html>

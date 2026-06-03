@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .icon-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; max-width: 640px; }
+  .ico-tile {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 11px 4px 8px; border: 1px solid var(--light-border); border-radius: 10px; background: #fff;
+  }
+  .ico-tile svg { width: 20px; height: 20px; stroke-width: 2; color: var(--color-graphite); }
+  .ico-tile.accent svg { color: var(--color-mulberry); }
+  .ico-name { font-size: 8.5px; color: var(--light-text-muted); text-align: center; line-height: 1.1; }
+</style>
+</head>
+<body>
+<div class="card-wrap">
+  <div class="label-xs">Iconography — Lucide (system icon set)</div>
+  <div class="icon-grid">
+    <div class="ico-tile accent"><i data-lucide="target"></i><span class="ico-name">target</span></div>
+    <div class="ico-tile accent"><i data-lucide="chart-column"></i><span class="ico-name">chart</span></div>
+    <div class="ico-tile accent"><i data-lucide="users"></i><span class="ico-name">users</span></div>
+    <div class="ico-tile accent"><i data-lucide="calendar-days"></i><span class="ico-name">calendar</span></div>
+    <div class="ico-tile"><i data-lucide="search"></i><span class="ico-name">search</span></div>
+    <div class="ico-tile"><i data-lucide="sliders-horizontal"></i><span class="ico-name">filter</span></div>
+    <div class="ico-tile"><i data-lucide="settings"></i><span class="ico-name">settings</span></div>
+    <div class="ico-tile"><i data-lucide="upload"></i><span class="ico-name">upload</span></div>
+    <div class="ico-tile"><i data-lucide="chevron-down"></i><span class="ico-name">expand</span></div>
+    <div class="ico-tile"><i data-lucide="chevrons-up-down"></i><span class="ico-name">sort</span></div>
+    <div class="ico-tile"><i data-lucide="arrow-up-right"></i><span class="ico-name">trend up</span></div>
+    <div class="ico-tile"><i data-lucide="arrow-down-right"></i><span class="ico-name">trend down</span></div>
+    <div class="ico-tile"><i data-lucide="circle-check" style="color:#2f6f1d"></i><span class="ico-name">on track</span></div>
+    <div class="ico-tile"><i data-lucide="triangle-alert" style="color:#8a6200"></i><span class="ico-name">at risk</span></div>
+    <div class="ico-tile"><i data-lucide="sun"></i><span class="ico-name">light</span></div>
+    <div class="ico-tile"><i data-lucide="moon"></i><span class="ico-name">dark</span></div>
+  </div>
+  <div style="font-size:10.5px;color:var(--light-text-muted);max-width:600px">Lucide — thin, geometric, single-stroke (2px). Pairs with Inter; replaces the legacy emoji markers. Mulberry for primary/section icons, graphite for controls, status colours for state.</div>
+</div>
+<script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body></html>

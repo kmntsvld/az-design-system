@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .num { font-family: var(--font-body); font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+</style>
+</head>
+<body>
+<div class="card-wrap">
+  <div class="label-xs">Data / Numbers — Inter, tabular figures</div>
+  <div class="num" style="font-size:22px;font-weight:600;color:var(--color-mulberry)">$5.70m&nbsp;&nbsp;82%&nbsp;&nbsp;1.4 FTE</div>
+  <div class="num" style="font-size:13px;color:var(--light-text)">Q1 0.20 / 0.18&nbsp;&nbsp;&nbsp;Q2 0.90 / 0.84&nbsp;&nbsp;&nbsp;Q3 2.10 / —</div>
+  <div style="display:flex;align-items:flex-end;gap:14px">
+    <div>
+      <div class="label-xs" style="margin-bottom:3px">Tabular — columns align</div>
+      <div class="num" style="font-size:14px;font-weight:500;color:var(--light-text);line-height:1.35;text-align:right;width:88px">1,204.50<br>96.00<br>5,710.20</div>
+    </div>
+    <div style="border-left:1px solid var(--light-border);padding-left:14px">
+      <div class="label-xs" style="margin-bottom:3px">Glyphs</div>
+      <div class="num" style="font-size:18px;font-weight:500;color:var(--light-text);letter-spacing:0.02em">0 1 2 3 4 5 6 7 8 9</div>
+    </div>
+  </div>
+  <div style="font-size:10.5px;color:var(--light-text-muted)">Same Inter family as UI text — no separate mono face. <code style="font-family:var(--font-body)">font-variant-numeric: tabular-nums</code> keeps plan/fact columns aligned.</div>
+</div>
+</body></html>
