@@ -27,6 +27,20 @@ Consumer apps (Metrics-Dashboard, Resource-Plan) load tokens via CDN.
 |---|---|
 | `tokens.css` | CSS custom properties — все актуальные значения с комментариями |
 | `tokens.js` | `window.AZ_DS` — те же значения для React / JSX inline styles |
+| `assets/` | Бренд-картинки: логотипы (`az-logo*.png`) и favicon |
+
+**Бренд-картинки (`assets/`):**
+
+| Файл | Назначение |
+|---|---|
+| `az-logo.png` / `az-logo-white.png` | Полный логотип (wordmark + знак); white — knockout для тёмного фона |
+| `az-icon.png` | Только золотой знак AZ, 512×512, прозрачный фон (master для иконок) |
+| `favicon.ico` | Favicon 16/32/48 (классический) |
+| `favicon-32.png` | Favicon 32×32 (PNG для современных браузеров) |
+| `apple-touch-icon.png` | 180×180 для iOS home-screen |
+
+> Иконки сгенерированы из золотого знака `az-logo.png` (без слова AstraZeneca).
+> Подключать через CDN (см. сниппет ниже), как и токены.
 
 > Актуальные значения токенов — читать в `tokens.css`, не в этом файле.
 > Там же комментарии по группам: примитивы, светлая/тёмная тема, статусы.
@@ -45,6 +59,10 @@ Consumer apps (Metrics-Dashboard, Resource-Plan) load tokens via CDN.
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- 4. Favicon — фирменный золотой знак AZ (без wordmark) -->
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/kmntsvld/az-design-system@main/assets/favicon-32.png">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/kmntsvld/az-design-system@main/assets/favicon.ico">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/kmntsvld/az-design-system@main/assets/apple-touch-icon.png">
 ```
 
 **Версионирование:** `@main` = всегда свежее (для прототипов).
